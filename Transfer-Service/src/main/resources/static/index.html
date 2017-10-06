@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="transferApp">
+<head>
+    <title>Code Assignment</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+	
+	<!-- SPELLS -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+    <script src="/js/controller.js"></script> 
+  	
+  	<!-- Styleheets -->
+    <link rel="stylesheet" href="/css/style.css"/>
+    
+</head>
+<body>
+	<nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Transfer - Service</a>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron text-center" >
+        <div class="container" ng-controller="GetController">
+            <div class="row">
+                <div class="col-xs-12">
+                     <a ng-click="getAllAccount()" class="btn btn-primary">Fetch All account</a>
+                </div>
+                <div class="col-xs-12">
+                     <a ng-click="createAccount()" class="btn btn-primary">Create Account</a>
+                </div>
+                <div class="col-xs-12">
+                     <a ng-click="transferAccount()" class="btn btn-primary">Transfer Account</a>
+                </div>
+            </div>
+            <div class="row alert alert-danger alert-dismissable" role="alert" ng-show="errMessage.length > 0">
+							<a ng-click="errMessage = null" class="close" aria-label="close">&times;</a>
+							{{errMessage}}
+					</div> 
+            <div class="row" ng-show="resulttable">
+                <div class="col-xs-12">
+                    <div id="resulttable" class="table-responsive col-lg-12">
+                        <table class="table table-striped">
+                            <thead>
+                            	<tr>
+                            		 <td colspan="7" bgcolor="#428bca"><h4>Player List (Sorted on score, no of loses) </h4></td>
+                            	</tr>
+                                <tr>
+                                	<td>Rank</td>
+                                    <td>Player Id</td>
+                                    <td>Player Name</td>
+                                    <td>Score</td>
+                                    <td>Rating</td>
+                                    <td>#Wins</td>
+                                    <td>#Loses</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in response">
+                                 	<td>{{item.rank}}</td>
+                                    <td>{{item.id}}</td>
+                                    <td><a title="Click for player match history" ng-click="getPlayedMatches(item)">{{item.name}}</a></td>
+                                    <td>{{item.score | number: 1}}</td>
+                                    <td>{{item.rating}}</td>
+                                    <td>{{item.noofwins}}</td>
+                                    <td>{{item.noofloses}}</td>
+                                </tr>
+                            </tbody>
+                        	<tfoot>
+			                     <a ng-click="getSuggestedMatches(response)" class="btn btn-primary">Click here for Predicted Matches</a>
+			                </tfoot>
+                       </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
