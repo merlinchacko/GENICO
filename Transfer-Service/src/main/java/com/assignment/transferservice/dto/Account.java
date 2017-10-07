@@ -1,12 +1,9 @@
 package com.assignment.transferservice.dto;
 
-import org.springframework.stereotype.Component;
-
 /**
  * @author Merlin
  *
  */
-@Component
 public class Account {
 	
 	private long account_id;
@@ -14,8 +11,11 @@ public class Account {
 	private String account_number;
 	private double account_balance;
 	
+	public Account() {
+    }
+	
 	public Account(String account_name, double account_balance) {
-		
+
 		this.account_name = account_name;
 		this.account_balance = account_balance;
 	}
@@ -42,6 +42,12 @@ public class Account {
 	}
 	public void setAccount_balance(double account_balance) {
 		this.account_balance = account_balance;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [account_id=" + account_id + ", account_name=" + account_name + ", account_number="
+				+ account_number + ", account_balance=" + account_balance + "]";
 	}
 
 }
