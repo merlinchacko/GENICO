@@ -49,9 +49,15 @@ app.controller('GetController', function($scope, $http, $location, $modal) {
             			url: $location.absUrl() + "createAccount",
             			data : account
             		}).then(function (response) {
-            			$scope.result = response.data;
-            			 $modalInstance.close();
-            			 getAllAccounts();
+            			
+            			console.log("response.data:"+response.data);
+            			if(response.data == "Created"){
+            				$scope.result = "Account created succesfully";
+            				$modalInstance.close();
+               			 	getAllAccounts();
+            			}else {
+            				$scope.result = "Account already exists. Please try again with different account name."; 
+            			}
             		}, function (response) {
             			$scope.result = response.data;
             		});
@@ -89,8 +95,10 @@ app.controller('GetController', function($scope, $http, $location, $modal) {
                			 	getAllAccounts();
             			}else if(response.data == "Invalid") {
             				$scope.result = "Invalid account details.";
-            			}else {
+            			}else if(response.data == "InsufficientBalance") {
             				$scope.result = "Insufficient balance to transfer."; 
+            			}else {
+            				$scope.result = "Account selected are same. Please choose different account for transfer."; 
             			}
             		}, function (response) {
             			$scope.result = response.data;

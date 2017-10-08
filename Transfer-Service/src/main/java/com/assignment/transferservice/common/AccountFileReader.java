@@ -1,7 +1,6 @@
 package com.assignment.transferservice.common;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -21,6 +20,12 @@ public class AccountFileReader {
 	private static final int ACCOUNT_NAME_IDX = 0;
     private static final int ACCOUNT_BALANCE_IDX = 1;
 	    
+	    /**
+	     * @param resource
+	     * @return Map<String, Account
+	     * @throws Exception
+	     * Reads data from csv file using BufferedReader
+	     */
 	    public static  Map<String, Account>  readFromCsv(Resource resource) throws Exception {
 	        BufferedReader fileReader = null;
 	        Map<String, Account> accountMap = new HashMap<>();

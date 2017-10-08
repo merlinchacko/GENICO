@@ -14,12 +14,15 @@ import com.assignment.transferservice.dto.Account;
  */
 public class AccountFileWriter {
 
-
-
-	private static final String FILE_HEADER = "account_name,account_balance";
 	private static final String COMMA_DELIMITER = ",";
 	private static final CharSequence NEW_LINE_SEPARATOR = "\n";
 
+	/**
+	 * @param resource
+	 * @param account
+	 * @throws Exception
+	 * writes to csv file using FileWriter
+	 */
 	public static void writeToCsv(Resource resource, Account account) throws Exception {
 		FileWriter fileWriter = null;
 		try {
@@ -29,9 +32,7 @@ public class AccountFileWriter {
 			fileWriter.append(COMMA_DELIMITER);
 			fileWriter.append(String.valueOf(account.getAccount_balance()));
 			fileWriter.append(NEW_LINE_SEPARATOR);
-			System.out.println("CSV file was created successfully !!!");
 		} catch (Exception e) {
-			System.out.println("Error in CsvFileWriter !!!");
 			e.printStackTrace();
 			throw new Exception();
 		} finally {
@@ -39,21 +40,24 @@ public class AccountFileWriter {
 				fileWriter.flush();
 				fileWriter.close();
 			} catch (IOException e) {
-				System.out.println("Error while flushing/closing fileWriter !!!");
 				e.printStackTrace();
 				throw new Exception();
 			}
 		}
 	}
 	
+	/**
+	 * @param resource
+	 * @param accountList
+	 * @throws Exception
+	 * writes to csv file using FileWriter
+	 */
 	public static void writeToCsv(Resource resource, List<Account> accountList) throws Exception {
 
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(resource.getFile(), true);
 			
-			//fileWriter.append(FILE_HEADER.toString());
-			//fileWriter.append(NEW_LINE_SEPARATOR);
 			for(Account account : accountList) {
 				
 				fileWriter.append(account.getAccount_name().toLowerCase());
@@ -61,9 +65,7 @@ public class AccountFileWriter {
 				fileWriter.append(String.valueOf(account.getAccount_balance()));
 				fileWriter.append(NEW_LINE_SEPARATOR);
 			}
-			System.out.println("CSV file was created successfully !!!");
 		} catch (Exception e) {
-			System.out.println("Error in CsvFileWriter !!!");
 			e.printStackTrace();
 			throw new Exception();
 		} finally {
@@ -71,7 +73,6 @@ public class AccountFileWriter {
 				fileWriter.flush();
 				fileWriter.close();
 			} catch (IOException e) {
-				System.out.println("Error while flushing/closing fileWriter !!!");
 				e.printStackTrace();
 				throw new Exception();
 			}

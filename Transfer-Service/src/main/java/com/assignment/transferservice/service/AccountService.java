@@ -14,7 +14,7 @@ public interface AccountService {
 
 	List<Account> getAllAccounts() throws Exception;
 
-	void createAccount(Account account) throws Exception;
+	Future<String> createAccount(Account account) throws Exception;
 
 	Future<String> transferAccount(TransferDetails details) throws Exception;
 

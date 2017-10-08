@@ -24,14 +24,14 @@
                     <div class="modal-header">
                         <h4 class="modal-title">Create Account</h4>
 							<div class="row alert alert-danger alert-dismissable" role="alert" ng-show="result.length > 0">
-								<a ng-click="errMessage = null" class="close" aria-label="close">&times;</a>
+								<a ng-click="result = null" class="close" aria-label="close">&times;</a>
 								{{result}}
 						 	</div> 
                     </div>
                     <div class="modal-body">
                          <form name="saveData">
         					Account Name:    <br/><input type="text" ng-model="accountName">    <br/><br/>
-        					Account Balance: <br/><input type="text" ng-model="accountBalance"> <br/><br/>
+        					Account Balance: <br/><input type="number" ng-model="accountBalance"> <br/><br/>
 				            <br/><br/>
     					 </form>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title">Transfer Amount To Different Account</h4>
 							<div class="row alert alert-danger alert-dismissable" role="alert" ng-show="result.length > 0">
-								<a ng-click="errMessage = null" class="close" aria-label="close">&times;</a>
+								<a ng-click="result = null" class="close" aria-label="close">&times;</a>
 								{{result}}
 						 	</div> 
                     </div>
@@ -56,7 +56,7 @@
                          <form name="saveData">
         					From Account Name:    <br/><input type="text" ng-model="fromAccount">    <br/><br/>
   							To Account Name:    <br/><input type="text" ng-model="toAccount">    <br/><br/>
-        					Transfer Amount: <br/><input type="text" ng-model="transferAmount"> <br/><br/>
+        					Transfer Amount: <br/><input type="number" ng-model="transferAmount"> <br/><br/>
             				<br/><br/>
     					</form>
                     </div>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="row alert alert-danger alert-dismissable" role="alert" ng-show="result.length > 0">
-							<a ng-click="errMessage = null" class="close" aria-label="close">&times;</a>
+							<a ng-click="result = null" class="close" aria-label="close">&times;</a>
 							{{result}}
 			</div> 
 			<hr></hr>
