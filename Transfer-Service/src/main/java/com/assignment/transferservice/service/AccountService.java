@@ -1,6 +1,7 @@
 package com.assignment.transferservice.service;
 
 import java.util.List;
+import java.util.concurrent.Future;
 
 import com.assignment.transferservice.dto.Account;
 import com.assignment.transferservice.dto.TransferDetails;
@@ -15,6 +16,6 @@ public interface AccountService {
 
 	void createAccount(Account account) throws Exception;
 
-	String transferAccount(TransferDetails details) throws Exception;
+	Future<String> transferAccount(TransferDetails details) throws Exception;
 
 }

@@ -40,7 +40,6 @@ app.controller('GetController', function($scope, $http, $location, $modal) {
                     $modalInstance.dismiss('cancel'); 
                 };
                 $scope.createAccount = function(){
-            		console.log("url:"+ $location.absUrl() + "createAccount");
             		var account = {
             				account_name: this.accountName,
             				account_balance:this.accountBalance	    

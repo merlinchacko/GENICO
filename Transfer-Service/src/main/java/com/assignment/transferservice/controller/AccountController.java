@@ -58,7 +58,7 @@ public class AccountController {
 		String resultMsg = "";
 		try {
 			
-			resultMsg = accountService.transferAccount(details);
+			resultMsg = accountService.transferAccount(details).get().toString();
 		} catch (Exception e) {
 			
 			return new ResponseEntity<>(gson.toJson("Amount transfer failed due to server error!"), HttpStatus.INTERNAL_SERVER_ERROR);

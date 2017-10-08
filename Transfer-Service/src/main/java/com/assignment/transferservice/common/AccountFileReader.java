@@ -3,8 +3,11 @@ package com.assignment.transferservice.common;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.core.io.Resource;
 
 import com.assignment.transferservice.dto.Account;
 
@@ -18,14 +21,14 @@ public class AccountFileReader {
 	private static final int ACCOUNT_NAME_IDX = 0;
     private static final int ACCOUNT_BALANCE_IDX = 1;
 	    
-	    public static  Map<String, Account>  readFromCsv(String fileName) throws Exception {
+	    public static  Map<String, Account>  readFromCsv(Resource resource) throws Exception {
 	        BufferedReader fileReader = null;
 	        Map<String, Account> accountMap = new HashMap<>();
 	        try {
 	             
 	            String line = "";
 
-	            fileReader = new BufferedReader(new FileReader(fileName));
+	            fileReader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
 	             
 	            fileReader.readLine();
 	             
