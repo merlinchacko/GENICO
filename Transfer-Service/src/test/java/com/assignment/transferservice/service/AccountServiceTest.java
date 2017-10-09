@@ -38,7 +38,6 @@ public class AccountServiceTest {
 		
 		Random ran = new Random();
 		int x = ran.nextInt(10000) + 10;
-		accountService.createAccount(new Account("Account 0", 1000));
 		
 		int beforeSize = accountService.getAllAccounts().size();
 

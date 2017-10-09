@@ -4,8 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.core.io.Resource;
-
 import com.assignment.transferservice.dto.Account;
 
 /**
@@ -23,10 +21,10 @@ public class AccountFileWriter {
 	 * @throws Exception
 	 * writes to csv file using FileWriter
 	 */
-	public static void writeToCsv(Resource resource, Account account) throws Exception {
+	public static void writeToCsv(String filename, Account account) throws Exception {
 		FileWriter fileWriter = null;
 		try {
-			fileWriter = new FileWriter(resource.getFile(), true);
+			fileWriter = new FileWriter(filename, true);
 				
 			fileWriter.append(account.getAccount_name().toLowerCase());
 			fileWriter.append(COMMA_DELIMITER);
@@ -52,11 +50,11 @@ public class AccountFileWriter {
 	 * @throws Exception
 	 * writes to csv file using FileWriter
 	 */
-	public static void writeToCsv(Resource resource, List<Account> accountList) throws Exception {
+	public static void writeToCsv(String filename, List<Account> accountList) throws Exception {
 
 		FileWriter fileWriter = null;
 		try {
-			fileWriter = new FileWriter(resource.getFile(), true);
+			fileWriter = new FileWriter(filename, true);
 			
 			for(Account account : accountList) {
 				

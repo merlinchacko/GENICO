@@ -1,12 +1,10 @@
 package com.assignment.transferservice.common;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.springframework.core.io.Resource;
 
 import com.assignment.transferservice.dto.Account;
 
@@ -26,16 +24,15 @@ public class AccountFileReader {
 	     * @throws Exception
 	     * Reads data from csv file using BufferedReader
 	     */
-	    public static  Map<String, Account>  readFromCsv(Resource resource) throws Exception {
+	    public static  Map<String, Account>  readFromCsv(String filename) throws Exception {
 	        BufferedReader fileReader = null;
 	        Map<String, Account> accountMap = new HashMap<>();
 	        try {
 	             
 	            String line = "";
 
-	            fileReader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
-	             
-	            fileReader.readLine();
+	           // fileReader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
+	            fileReader = new BufferedReader(new FileReader(filename));
 	             
 	            while ((line = fileReader.readLine()) != null) {
 

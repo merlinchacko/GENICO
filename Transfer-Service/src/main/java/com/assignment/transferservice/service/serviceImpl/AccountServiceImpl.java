@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,9 @@ import com.assignment.transferservice.service.AccountService;
 @Service("accountService")
 public class AccountServiceImpl implements AccountService{
 
-	@Value("classpath:files/account.csv") private Resource accountFile;
+	//@Value("classpath:files/account.csv") private Resource accountFile;
+	
+	private String filename = System.getProperty("user.home")+"/account.csv";
 	
 	/* (non-Javadoc)
 	 * @see com.assignment.transferservice.service.AccountService#getAllAccounts()
@@ -56,7 +56,7 @@ public class AccountServiceImpl implements AccountService{
 			result = "AlreadyExist";
 		} else {
 			
-			AccountFileWriter.writeToCsv(accountFile , account);
+			AccountFileWriter.writeToCsv(filename , account);
 			result = "Created";
 		}
 
@@ -100,7 +100,7 @@ public class AccountServiceImpl implements AccountService{
 					
 					List<Account> accountList = new ArrayList<Account>(accounts.values());
 	
-					AccountFileWriter.writeToCsv(accountFile, accountList);
+					AccountFileWriter.writeToCsv(filename, accountList);
 					
 					result = "Success";
 				} else {
@@ -123,7 +123,7 @@ public class AccountServiceImpl implements AccountService{
 	 */
 	private Map<String, Account> readDataFromCsv() throws Exception {
 
-		Map<String, Account> accountsmap = AccountFileReader.readFromCsv(accountFile);
+		Map<String, Account> accountsmap = AccountFileReader.readFromCsv(filename);
 
 		return accountsmap;
 	}
